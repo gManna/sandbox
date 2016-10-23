@@ -21,4 +21,4 @@ app.use("/", express.static(__dirname + "/public/"));
 
 app.listen(4000);
 Routes(app);
-console.log('listening on port 3000');
+console.log('listening on port 4000');

@@ -10,13 +10,12 @@ import ReactDOMServer from 'react-dom/server';
 import request from 'request';
 
 function Routes(app) {
-    //var htmlHelper = new Html();
+    var UserController = new User();
     app.get('/',function(req,res,next){
       homeController(req,res);
     });
     app.get('/api/users',function(req,res,next){
-      var UserController = new User(req,res,next);
-      UserController.list();
+      UserController.list(req,res,next);
     });
     app.get('/users',function(req,res,next){
 
@@ -26,13 +25,9 @@ function Routes(app) {
           state: JSON.stringify(body) // Pass current state to client side
         });
       })
-      //let markup = htmlHelper.renderComponent(usersList,UserComponent);
-      //htmlHelper.renderSection(res,'app',markup,usersList);
     });
     app.post('/users',function(req,res,next){
-
-      var UserController = new User(req,res,next);
-      UserController.create({"name":"Piero","surname":"Manna"});
+      UserController.create({"name":"Piero","surname":"Manna"},req,res,next);
     });
 }
 export { Routes as default}
