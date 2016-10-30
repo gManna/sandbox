@@ -144,11 +144,11 @@
 	});
 	exports.default = undefined;
 
-	var _usersListReact = __webpack_require__(196);
+	var _usersListReact = __webpack_require__(8);
 
 	var _usersListReact2 = _interopRequireDefault(_usersListReact);
 
-	var _MainAppReact = __webpack_require__(9);
+	var _MainAppReact = __webpack_require__(10);
 
 	var _MainAppReact2 = _interopRequireDefault(_MainAppReact);
 
@@ -168,7 +168,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(10);
+	var _reactDom = __webpack_require__(9);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -207,8 +207,7 @@
 	exports.default = Routes;
 
 /***/ },
-/* 8 */,
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -221,7 +220,59 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(10);
+	var _reactDom = __webpack_require__(9);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _userReact = __webpack_require__(196);
+
+	var _userReact2 = _interopRequireDefault(_userReact);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var UsersListComponent = _react2.default.createClass({
+		displayName: 'UsersListComponent',
+
+		getInitialState: function getInitialState() {
+			return { data: this.props.users };
+		},
+		render: function render() {
+			var obj = this.state.data;
+			var rows = [];
+
+			return _react2.default.createElement(
+				'ul',
+				null,
+				obj.map(function (obj, key) {
+					return _react2.default.createElement(_userReact2.default, { key: key, user: obj });
+				})
+			);
+		}
+	});
+
+	exports.default = UsersListComponent;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("react-dom");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(9);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -246,12 +297,6 @@
 	exports.default = Application;
 
 /***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = require("react-dom");
-
-/***/ },
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -266,7 +311,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(10);
+	var _reactDom = __webpack_require__(9);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -274,7 +319,7 @@
 
 	var _server2 = _interopRequireDefault(_server);
 
-	var _MainAppReact = __webpack_require__(9);
+	var _MainAppReact = __webpack_require__(10);
 
 	var _MainAppReact2 = _interopRequireDefault(_MainAppReact);
 
@@ -20323,37 +20368,30 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(10);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var UsersListComponent = _react2.default.createClass({
-		displayName: 'UsersListComponent',
+	var UserComponent = _react2.default.createClass({
+		displayName: 'UserComponent',
 
-		getInitialState: function getInitialState() {
-			return { data: this.props.users };
-		},
 		render: function render() {
-			var obj = this.state.data;
-			var rows = [];
-
 			return _react2.default.createElement(
-				'ul',
+				'li',
 				null,
-				obj.map(function (obj, key) {
-					return _react2.default.createElement(
-						'li',
-						{ key: key },
-						obj.name
-					);
-				})
+				_react2.default.createElement(
+					'span',
+					null,
+					this.props.user.name
+				),
+				_react2.default.createElement(
+					'span',
+					null,
+					this.props.user.surname
+				)
 			);
 		}
 	});
 
-	exports.default = UsersListComponent;
+	exports.default = UserComponent;
 
 /***/ }
 /******/ ]);

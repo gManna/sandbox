@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import UserComponent from '../user.react.js';
 
 var UsersListComponent = React.createClass({
 	getInitialState: function() {
@@ -13,7 +14,7 @@ var UsersListComponent = React.createClass({
 			<ul>
 			{
 				obj.map(function(obj,key){
-					return <li key={key}>{obj.name}</li>;
+					return <UserComponent key={key} user={obj}/>
 				})
 
 			}
