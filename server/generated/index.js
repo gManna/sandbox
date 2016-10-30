@@ -224,7 +224,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _userReact = __webpack_require__(196);
+	var _userReact = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"user.react.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _userReact2 = _interopRequireDefault(_userReact);
 
@@ -20353,45 +20353,6 @@
 /***/ function(module, exports) {
 
 	module.exports = require("body-parser");
-
-/***/ },
-/* 196 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var UserComponent = _react2.default.createClass({
-		displayName: 'UserComponent',
-
-		render: function render() {
-			return _react2.default.createElement(
-				'li',
-				null,
-				_react2.default.createElement(
-					'span',
-					null,
-					this.props.user.name
-				),
-				_react2.default.createElement(
-					'span',
-					null,
-					this.props.user.surname
-				)
-			);
-		}
-	});
-
-	exports.default = UserComponent;
 
 /***/ }
 /******/ ]);
