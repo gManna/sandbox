@@ -1,9 +1,8 @@
-import UserComponent from '../components/user.react.js';
+import UsersListComponent from '../components/User/users-list.react.js';
 import Application from '../components/MainApp.react.js';
 import homeController from '../controllers/home.js';
 import User from '../controllers/user.js';
 import Usermodel from '../models/users.js';
-//import Html from '../helpers/Html.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
@@ -19,10 +18,11 @@ function Routes(app) {
     });
     app.get('/users',function(req,res,next){
 
-      request('http://localhost:4000/api/users', (error, response, body) => {
+      request('http://localhost:4000/api/users', (error, response, data) => {
+        var response = JSON.parse(data);
          res.render('app', {
-          markup: ReactDOMServer.renderToString(<UserComponent users={body}/>), // Pass rendered react markup
-          state: JSON.stringify(body) // Pass current state to client side
+          markup: ReactDOMServer.renderToString(<UsersListComponent users={response}/>), // Pass rendered react markup
+          state: response // Pass current state to client side
         });
       })
     });
