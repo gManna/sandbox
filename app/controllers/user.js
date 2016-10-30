@@ -11,7 +11,7 @@ class User {
       if(err) {
         res.status(500).json({"error": err});
       }else{
-         res.send(users);
+         res.status(200).json(users);
       }
     })
   }
@@ -24,6 +24,18 @@ class User {
       else
       res.status(201).json();
     });
+  }
+
+  findById(req,res,next,id){
+    Usermodel.findOne({
+      _id:id
+    },(err,user) => {
+      if(err){
+        res.status(500).json({"error": err});
+      }else{
+        res.status(200).json(user);
+      }
+    })
   }
 }
 

@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserComponent from 'user.react.js';
+import UserComponent from '../components/user.react.js';
 
-var UsersListComponent = React.createClass({
-	getInitialState: function() {
-	return {data: this.props.users};
-	},
-	render: function() {
-		var obj = this.state.data;
+class UsersListComponent extends React.Component {
+
+	render() {
+		var obj = this.props.users;
 		var rows = [];
 
 		return (
@@ -21,6 +19,6 @@ var UsersListComponent = React.createClass({
 			</ul>
 		);
 	}
-});
+};
 
 export default UsersListComponent;

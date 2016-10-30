@@ -26,6 +26,9 @@ function Routes(app) {
         });
       })
     });
+    app.get('/users/:userId',(req,res,next) => {
+      UserController.findById(req,res,next,req.params.userId)
+    })
     app.post('/users',function(req,res,next){
       UserController.create({"name":"Piero","surname":"Manna"},req,res,next);
     });

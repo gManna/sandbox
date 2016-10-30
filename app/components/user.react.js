@@ -1,15 +1,17 @@
 import React from 'react';
 
-var UserComponent = React.createClass({
-	render:function(){
+class UserComponent extends React.Component {
+	render(){
 		return (
 			<li>
-        <span>{this.props.user.name}</span>
-        <span>{this.props.user.surname}</span>
+				<a href={`users/${this.props.user.id}`}>
+					<span>{this.props.user.name}</span>
+					<span>{this.props.user.surname}</span>
+				</a>
 			</li>
 		)
 	}
-})
+}
 
 
 export default UserComponent;
