@@ -3,7 +3,8 @@
 var
 path = require('path'),
 webpack = require('webpack'),
-fs = require('fs');
+fs = require('fs'),
+ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var nodeModules = {};
 
@@ -30,6 +31,10 @@ const loaders = [{
 {
   test: /\.json$/,
   loader: "json-loader"
+},
+{
+  test: /\.less$/,
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
 }
 
 ];
@@ -47,7 +52,10 @@ module.exports = [{
   },
   module: {
     loaders: loaders
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('bundle.css', {allChunks: true})
+  ]
 },
 {
   name: 'server',
@@ -65,6 +73,9 @@ module.exports = [{
   },
   module: {
     loaders: loaders
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('[name].css')
+  ]
 
 }];
