@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserComponent from '../components/user.react.js';
+import UserComponent from 'components/users/user.react.js';
 
 class UsersListComponent extends React.Component {
 

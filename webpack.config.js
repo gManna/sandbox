@@ -69,8 +69,11 @@ module.exports = [{
   },
   externals: nodeModules,
   resolve: {
-    extensions: ['','.js', '.json']
-  },
+          alias: {
+              'components': './app/components'
+          },
+          extensions: ['', '.jsx', '.js', '.styl']
+      },
   module: {
     loaders: loaders
   },

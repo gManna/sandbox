@@ -1,5 +1,5 @@
-import UsersListComponent from '../components/users-list.react.js';
-import Application from '../components/MainApp.react.js';
+import UsersListComponent from 'components/users/users-list.react.js';
+import Application from 'components/MainApp.react.js';
 import homeController from '../controllers/home.js';
 import User from '../controllers/user.js';
 import Usermodel from '../models/users.js';

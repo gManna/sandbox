@@ -6,6 +6,12 @@
   ],
   "plugins": [
     "transform-runtime",
-    "transform-class-properties"
-  ]
-}
+    "transform-class-properties",
+    ["module-resolver", {
+      "root": ["./app"],
+      "alias": {
+        "components": "./components"
+      }
+      }]
+    ]
+  }
