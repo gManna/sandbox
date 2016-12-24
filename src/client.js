@@ -1,7 +1,3 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// ReactDOM.render(
-//   <h1>Home</h1>,
-//   document.getElementById('root')
-// );
+import "components/users/usersList.scss";

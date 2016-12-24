@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "webpack-watch": ".\\node_modules\\.bin\\webpack --watch",
+    "webpack-prod":"webpack --config webpack.config.prod.js",
     "express-server": "nodemon ./server",
-    "dev": "concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "dev": "SET NODE_ENV=development & concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "prod": "SET NODE_ENV=prod & concurrent --kill-others \"npm run webpack-prod\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,8 +31,10 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.6.1",
     "node-fetch": "^1.6.3",
+    "node-sass": "^3.13.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "sass-loader": "^4.0.2",
     "webpack": "^1.13.2"
   },
   "devDependencies": {
@@ -42,6 +46,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "nodemon": "^1.11.0",
+    "postcss-loader": "^1.1.0",
     "request": "^2.75.0",
     "style-loader": "^0.13.1"
   }

@@ -36,7 +36,7 @@ const loaders = [{
   test: /\.scss$/,
   exclude: /(node_modules)/,
   // loader: "style!css!sass",
-  loader: 'style!css?module&localIdentName=[name]__[local]___[hash:base64:5]!sass',
+  loader: ExtractTextPlugin.extract('css!sass'),
 }
 
 ];
@@ -49,8 +49,6 @@ module.exports = [{
     path: DIST_DIR,
     filename: 'bundle.js'
   },
-  devtool: '#inline-source-map',
- debug: true,
   resolve: {
           extensions: ['', '.js', '.jsx', '.scss']
       },
@@ -66,35 +64,4 @@ module.exports = [{
      }
    })
   ]
-},
-{
-  name: 'server',
-  target: 'node',
-  entry: {
-    app:'./server.js'
-  },
-  output: {
-    path: SERVER_DIR,
-    filename: 'index.js'
-  },
-  externals: nodeModules,
-  resolve: {
-    alias: {
-      'components': './app/components'
-    },
-    extensions: ['', '.js', '.jsx', '.scss']
-  },
-  module: {
-    loaders: loaders
-  },
-  plugins: [
-    new ExtractTextPlugin('server.css', {allChunks: true}),
-    new webpack.DefinePlugin({
-     "process.env": {
-       'BROWSER': JSON.stringify(true),
-       'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-     }
-   })
-  ]
-
 }];
