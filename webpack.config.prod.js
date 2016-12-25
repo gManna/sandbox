@@ -37,6 +37,14 @@ const loaders = [{
   exclude: /(node_modules)/,
   // loader: "style!css!sass",
   loader: ExtractTextPlugin.extract('css!sass'),
+},{
+  test: /\.less$/,
+  exclude:/(node_modules)/,
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
+},
+{
+  test: /\.(eot|svg|ttf|woff|woff2)$/,
+  loader: 'file?name=public/fonts/[name].[ext]'
 }
 
 ];
@@ -50,7 +58,7 @@ module.exports = [{
     filename: 'bundle.js'
   },
   resolve: {
-          extensions: ['', '.js', '.jsx', '.scss']
+          extensions: ['', '.js', '.jsx', '.scss','.less']
       },
   module: {
     loaders: loaders

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack-watch": ".\\node_modules\\.bin\\webpack --watch",
-    "webpack-prod":"webpack --config webpack.config.prod.js",
+    "webpack-prod": "webpack --config webpack.config.prod.js",
     "express-server": "nodemon ./server",
     "dev": "SET NODE_ENV=development & concurrent --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
     "prod": "SET NODE_ENV=prod & concurrent --kill-others \"npm run webpack-prod\"",
@@ -43,10 +43,11 @@
     "concurrently": "^2.2.0",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "nodemon": "^1.11.0",
-    "postcss-loader": "^1.1.0",
+    "postcss-loader": "^1.2.1",
     "request": "^2.75.0",
     "style-loader": "^0.13.1"
   }
