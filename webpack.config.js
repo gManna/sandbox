@@ -6,6 +6,7 @@ var
   fs = require('fs'),
   ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+
 var nodeModules = {};
 
 fs.readdirSync('node_modules')
@@ -28,6 +29,9 @@ const loaders = [{
       presets: ['es2015', 'react']
     }
   }, {
+    test: path.resolve(__dirname, "app/vendors/bootstrap"),
+    loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+  }, {
     test: /\.json$/,
     loader: "json-loader"
   }, {
@@ -35,13 +39,13 @@ const loaders = [{
     exclude: /(node_modules)/,
     // loader: "style!css!sass",
     loader: 'style!css?module&localIdentName=[name]__[local]___[hash:base64:5]!sass',
-  },{
+  }, {
     test: /\.less$/,
-    exclude:/(node_modules)/,
-    loader:'style-loader!css-loader!postcss-loader!less-loader'
-  },{
+    exclude: /(node_modules)/,
+    loader: 'style-loader!css-loader!postcss-loader!less-loader'
+  }, {
     test: /\.(eot|svg|ttf|woff|woff2)$/,
-    loader: 'file?name=public/fonts/[name].[ext]'
+    loader: 'file?name=assets/fonts/[name].[ext]'
   }
 
 ];
@@ -57,15 +61,17 @@ module.exports = [{
   devtool: '#inline-source-map',
   debug: true,
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss']
+    extensions: ['', '.js', '.jsx', '.scss'],
+    alias: {
+      'components': './app/components',
+      'styles': './app/styles',
+      'vendor': path.resolve(__dirname, "app/vendors"),
+    }
   },
   module: {
     loaders: loaders
   },
   plugins: [
-    new ExtractTextPlugin('client.css', {
-      allChunks: true
-    }),
     new webpack.DefinePlugin({
       "process.env": {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
@@ -85,16 +91,22 @@ module.exports = [{
   },
   externals: nodeModules,
   resolve: {
+    extensions: ['', '.js', '.jsx', '.scss'],
     alias: {
       'components': './app/components',
-      'styles': './app/styles'
-    },
-    extensions: ['', '.js', '.jsx', '.scss']
+      'styles': './app/styles',
+      'vendor': path.resolve(__dirname, "app/vendors")
+    }
   },
   module: {
     loaders: loaders
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    }),
     new ExtractTextPlugin('server.css', {
       allChunks: true
     }),
